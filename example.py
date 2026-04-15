@@ -5,10 +5,10 @@ load_dotenv()
 os.environ["PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS"] = "true"
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
-from showai import ShowAI, F5TTSEngine
+from showai import ShowAI, CosyVoiceEngine
 
-# Use F5-TTS for voice cloning
-engine = F5TTSEngine(ref_audio="lgvoice.wav")
+# Use CosyVoice 3 for voice cloning
+engine = CosyVoiceEngine(ref_audio="lgvoice.wav")
 
 app = ShowAI(tts=engine, output_video="demo1.mp4")
 

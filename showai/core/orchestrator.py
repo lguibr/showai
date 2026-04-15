@@ -20,8 +20,8 @@ class ShowAI:
         self.timeline.add_action(func)
         return self
 
-    def add_voice(self, text: str, wait=True):
-        self.timeline.add_voice(text, wait)
+    def add_voice(self, text: str, wait=True, **kwargs):
+        self.timeline.add_voice(text, wait, **kwargs)
         return self
 
     def add_wait(self, seconds: float):
@@ -70,7 +70,14 @@ class ShowAI:
                 broker.audio_progress = ((processed) / total_voice) * 100
                 
                 filename = f"audio_cache/step_{idx}.wav"
-                duration = self.tts.generate_audio(item["text"], filename)
+                kwargs = item.copy()
+                kwargs.pop("type", None)
+                kwargs.pop("text", None)
+                kwargs.pop("wait", None)
+                kwargs.pop("audio_file", None)
+                kwargs.pop("duration", None)
+                
+                duration = self.tts.generate_audio(item["text"], filename, **kwargs)
                 item["audio_file"] = filename
                 item["duration"] = duration
                 

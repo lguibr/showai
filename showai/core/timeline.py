@@ -13,12 +13,13 @@ class Timeline:
             "func": func
         })
 
-    def add_voice(self, text: str, wait=True):
+    def add_voice(self, text: str, wait=True, **kwargs):
         """Append an AI voice narration generation chunk."""
         self.events.append({
             "type": "voice",
             "text": text,
-            "wait": wait
+            "wait": wait,
+            **kwargs
         })
 
     def add_wait(self, seconds: float):

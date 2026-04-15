@@ -1,5 +1,5 @@
 from .base import TTSEngine
-from .f5_engine import F5TTSEngine
 from .fish_engine import FishEngine
+from .cosy_engine import CosyVoiceEngine
 
-__all__ = ["TTSEngine", "F5TTSEngine", "FishEngine"]
+__all__ = ["TTSEngine", "FishEngine", "CosyVoiceEngine"]

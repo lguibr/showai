@@ -5,9 +5,3 @@ __pycache__/
 raw_video/
 audio_cache/
 *.egg-info
-my_scripts/
-*.wav
-*.mp3
-*.m4a
-*.mp4
-*.webm
