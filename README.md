@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="ShowAI Logo" width="250" />
+  <img src="assets/logo.png" alt="ShowAI Logo" width="250" />
 </p>
 
 <h1 align="center">ShowAI</h1>
@@ -13,7 +13,7 @@
 ## 🚀 Features
 
 - **Programmatic Timeline**: Chain `add_action(lambda page: ...)`, `add_wait(sec)`, and `add_voice("Text")` to script your perfect demo.
-- **Dual TTS Engine Architecture**: 
+- **Dual TTS Engine Architecture**:
   - 🎙️ **F5-TTS**: High-quality, zero-shot voice cloning directly from your `.wav`/`.m4a` files.
 - **Cinematic Execution**: Features a built-in boot-up sequence, terminal ASCII art banner, and a professional video splash screen using your `logo.png`.
 - **Auto-Stitching**: Transparently delegates video + audio track alignment to FFmpeg, guaranteeing perfectly synced `.mp4` outputs.
@@ -38,7 +38,7 @@ playwright install chromium
 
 ---
 
-## 💻 Quickstart 
+## 💻 Quickstart
 
 A robust `example.py` is included in the project directory. It demonstrates how to rapidly spin up a voice-synced walkthrough using **F5-TTSVoice Cloning**.
 
@@ -69,6 +69,7 @@ if __name__ == "__main__":
 ```
 
 Run your timeline from your terminal (the ASCII banner will welcome you!):
+
 ```bash
 python example.py
 ```
@@ -78,13 +79,17 @@ python example.py
 ## 🧠 Architecture Setup
 
 ### Timeline Orchestrator (`ShowAI`)
+
 The Orchestrator caches the entire timeline before spinning up the browser. All heavy TTS generation happens *before* the browser window opens to ensure perfectly buttery-smooth Playwright recordings.
 
 ### Browser Automation (`BrowserAutomation`)
+
 Runs in `headless=False` so you visually confirm the script is working. It automatically renders a cinematic center-framed black HTML screen containing the logo for 0.5s before kicking off your `goto` and `click` logic.
 
 ### Missing FFmpeg?
+
 If the script crashes at the final video stitching step, please ensure your system has FFmpeg installed:
+
 - Ubuntu/Debian: `sudo apt install ffmpeg`
 - macOS: `brew install ffmpeg`
 
