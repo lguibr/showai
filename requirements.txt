@@ -1,4 +1,0 @@
-playwright
-ffmpeg-python
-mutagen
-f5-tts

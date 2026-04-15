@@ -10,11 +10,11 @@ from showai import ShowAI, CosyVoiceEngine
 
 # Use CosyVoice 3 for reliable voice cloning
 engine = CosyVoiceEngine(
-    ref_audio="assets/basic_ref_en.wav",
-    ref_text="Some call me nature, others call me mother nature."
+    default_prompt_audio="data/assets/my_voice.wav",
+    default_prompt_text="some call me nature, others call me mother nature"
 )
 
-app = ShowAI(tts=engine, output_video="aethermap_showcase.mp4", headless=False, play_audio=True)
+app = ShowAI(tts=engine, output_video="data/output/videos/aethermap_showcase.mp4", headless=False, play_audio=True)
 
 # Helper function to inject into actions for reliable slider updates
 def update_slider(page, label_text, value):
