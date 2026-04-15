@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "showai"
+version = "0.1.0"
+description = "ShowAI programmatic browser voiceover timeline generator."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.40.0",
+    "ffmpeg-python>=0.2.0",
+    "mutagen>=1.47.0",
+    "python-dotenv>=1.0.0",
+    "soundfile>=0.12.1",
+    "torch<=2.4.1",
+    "torchaudio<=2.4.1",
+    "nest-asyncio",
+    "f5-tts",
+    "rich>=13.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "mypy>=1.9.0",
+    "ruff>=0.3.0",
+    "build>=1.1.0"
+]
+
+[project.scripts]
+showai = "showai.cli:main"
+
+[tool.setuptools]
+packages = ["showai", "showai.tts", "showai.core", "showai.media", "showai.automation"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
