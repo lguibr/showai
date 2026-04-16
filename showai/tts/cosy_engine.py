@@ -13,7 +13,7 @@ class CosyVoiceEngine(TTSEngine):
     Fully embraces the official API signatures and Matcha-TTS dependencies.
     """
     
-    def __init__(self, default_prompt_audio: Optional[str] = None, default_prompt_text: Optional[str] = None, model_dir: str = "pretrained_models/Fun-CosyVoice3-1.5B"):
+    def __init__(self, default_prompt_audio: Optional[str] = None, default_prompt_text: Optional[str] = None, model_dir: str = "pretrained_models/Fun-CosyVoice3-0.5B"):
         self.default_prompt_audio = default_prompt_audio
         self.default_prompt_text = default_prompt_text
         self.model_dir = model_dir
@@ -35,11 +35,11 @@ class CosyVoiceEngine(TTSEngine):
         from huggingface_hub import snapshot_download
         from cosyvoice.cli.cosyvoice import AutoModel
         
-        # 2. Download Fun-CosyVoice3-1.5B if missing
+        # 2. Download Fun-CosyVoice3-0.5B if missing
         if not os.path.exists(self.model_dir):
             print(f"[CosyVoice 3.0] Downloading model to {self.model_dir}...")
             self.model_dir = snapshot_download(
-                'FunAudioLLM/Fun-CosyVoice3-1.5B-2512', 
+                'FunAudioLLM/Fun-CosyVoice3-0.5B-2512', 
                 local_dir=self.model_dir
             )
             
