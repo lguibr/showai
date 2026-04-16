@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cosyvoice-api:
+    build:
+      context: .
+      dockerfile: CosyVoice.Dockerfile
+    container_name: cosyvoice-backend
+    ports:
+      - "50000:50000"
+    volumes:
+      - ./pretrained_models:/workspace/CosyVoice/pretrained_models
+    command: python3 runtime/python/fastapi/server.py --port 50000 --model_dir pretrained_models/Fun-CosyVoice3-0.5B
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

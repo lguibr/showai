@@ -6,6 +6,5 @@ raw_video/
 audio_cache/
 *.egg-info
 pretrained_models/
-CosyVoice/
 data/output/
 data/cache/

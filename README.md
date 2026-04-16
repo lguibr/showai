@@ -17,33 +17,33 @@
   - 🎙️ **FunAudioLLM / CosyVoice 3.0**: High-quality, zero-shot voice cloning directly from a short reference audio file. The engine robustly maps instructions to speech directly inside a `Qwen2` LLM architecture.
 - **Cinematic Execution**: Features a built-in boot-up sequence, terminal ASCII art banner, and a professional video splash screen using your `logo.png`.
 - **Auto-Stitching**: Transparently delegates video + audio track alignment to FFmpeg, guaranteeing perfectly synced `.mp4` outputs.
-
 ---
 
 ## 🛠️ Installation
 
-ShowAI is built for modern Python (3.10+). We recommend using `uv` for lightning-fast dependency resolution.
+ShowAI's client logic is blazing fast and lightweight. It delegates the heavy PyTorch Voice Cloning inference to an external `docker-compose` backend!
 
 ```bash
-# 1. Create your isolated environment
+# 1. Start the Voice Cloning Backend (Requires CUDA/NVIDIA Toolkit)
+# This spins up the CosyVoice FastAPI Engine on port :50000
+docker-compose up -d
+
+# 2. Setup your local Environment 
 uv venv --python 3.12 .venv
 source .venv/bin/activate
 
-# 2. Install ShowAI dependencies (including ONNX and Torch components)
+# 3. Install the ShowAI Lightweight Client API
 uv pip install -e .
 
-# 3. Ensure browser drivers are present
+# 4. Ensure browser drivers are present
 playwright install chromium
 ```
-
-> [!NOTE]
-> ShowAI relies directly on the `CosyVoice` Submodule and its internal dependencies like `Matcha-TTS`. This directory must remain intact within the root directory to properly route PyTorch inference algorithms and ONNX tokens.
 
 ---
 
 ## 💻 Quickstart
 
-Create an orchestrator script (e.g. `aethermap.py`) to visually sync your browser automation with generating your custom voice:
+Because `ShowAI` dynamically queries the `localhost:50000` Docker backend, you can execute your timelines entirely completely free of PyTorch overhead:
 
 ```python
 import os

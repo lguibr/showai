@@ -14,19 +14,8 @@ dependencies = [
     "mutagen>=1.47.0",
     "python-dotenv>=1.0.0",
     "soundfile>=0.12.1",
-    "torch<=2.4.1",
-    "torchaudio<=2.4.1",
     "nest-asyncio",
-    "modelscope>=1.20.0",
-    "huggingface_hub",
-    "x-transformers",
-    "conformer",
-    "diffusers",
-    "hydra-core",
-    "HyperPyYAML",
-    "pyworld",
-    "wetext",
-    "onnxruntime-gpu",
+    "httpx>=0.27.0",
     "rich>=13.0.0"
 ]
 
@@ -41,8 +30,6 @@ dev = [
 [project.scripts]
 showai = "showai.cli:main"
 
-[tool.setuptools]
-packages = ["showai", "showai.tts", "showai.core", "showai.media", "showai.automation"]
 
 [tool.ruff]
 line-length = 100
@@ -51,3 +38,6 @@ target-version = "py310"
 [tool.mypy]
 strict = true
 ignore_missing_imports = true
+
+[tool.setuptools]
+packages = ["showai", "showai.tts", "showai.core", "showai.media", "showai.automation"]
